@@ -99,7 +99,7 @@ function useless(value) {
 ### 📝 An example of a function that uses Parameters _and_ a Return:
 ```JS
 // Return a random value from 'min' to 'max', inclusive
-randInt(min, max) {
+function randInt(min, max) {
     let rnd = Math.floor(Math.random() * (max - min + 1)) + min;
     return rnd;
 }

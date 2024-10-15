@@ -2,7 +2,7 @@
 
 ##### ICS3 - Mr. Brash 🐿️
 
-<img src="./.vscode/params_and_return.png" width="280px"  style="display:block;margin:auto;filter:drop-shadow(3px 3px 4px grey)">  
+<img src="./images/params_and_return.png" width="280px"  style="display:block;margin:auto;filter:drop-shadow(3px 3px 4px grey)">  
 
 <br>
 

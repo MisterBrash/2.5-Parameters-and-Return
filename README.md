@@ -1,106 +1,109 @@
-# 2.4 - Custom Functions
+# 2.5 - Function Parameters and Return
 
 ##### ICS3 - Mr. Brash 🐿️
 
+<img src="./.vscode/params_and_return.png" width="280px"  style="display:block;margin:auto;filter:drop-shadow(3px 3px 4px grey)">  
+
+<br>
+
 **If you missed the live demonstration in class, read below. Otherwise you can go straight to [your task](./YOUR_TASK.md).**
 
-A `function` is something that is repeatable, with a specific purpose. The human body has countless `functions` from respiratory and coronary, to balance, movement, and sleep. Even just _blinking_ is a `function` of the human body.
+- Don't like reading? [Here's a video on _Parameters_](https://youtu.be/hI-04Ot4vZY) and [here's a video on _Return_](https://youtu.be/qV4PHIp-PNs)
 
-**Mathematical `functions`** are similar - area of a circle, pythogorean theorem, the quadratic formula, etc.
 
-**Code `functions`** are the same! They perform an action the same way, every time.
+## Part 1 - Parameters
 
-You have been using `functions` to _command_ JavaScript do things:
+**Ever notice that `Math.floor(x)` takes in a number but `Math.random()` doesn't?**  
+And `console.log()` can take _many_ values, separated by commas. 
+
+Those values inside the brackets are called _**parameters**_. They are the _inputs_ to a function and allow us to _pass_ values around in our code. Here's an example of a **custom function with parameters**:
 ```JS
-console.log(`You are ${age} years old.`);  // The console's log() function
-let x = Math.round(value);                 // The round() function
-let rnd = Math.random();                   // The random() function
-```
-
-### 💡 More JS _Functions_ - User Input!
-
-While it's not very pretty, JavaScript has a `prompt()` _function_ which asks the user for some input.
-
-```JS
-let user_age = prompt("How old are you?");
-```
-
-❕**There is a minor issue** - the input always comes in as a _String_.
-```JS
-console.log(typeof user_age);
-
-'string'
-```
-
-**Thankfully**, there is a function to attempt to convert to a number!
-```JS
-user_age = Number(user_age);  // Note that it starts with a capital "N". Why? It's complicated.
-
-console.log(typeof user_age);
-
-'number'
-```
-
-**Now you know two more `functions`!** And they can be combined:
-```JS
-let length = Number(prompt("Please give a length in centimeters."));
-```
-
-**And of course there's a _shortcut_ for `Number()`**  
-JavaScript is _full_ of shortcuts. This one is called the "unary + operator":
-```JS
-let age = prompt("How old are you?");
-age = +age;   // This converts to a number and stores it back into age
-
-let year = +prompt("What year is it?");  // This does it all on one line
-```
-
----
-
-### 🙌🏻 We can make our _own_ functions!
-
-In programming, these are called "custom functions" and _sometimes_ "user-defined functions".
-
-- What if you wanted a function that outputs the current time?
-- How about a function that calculates the distance from your position to an enemy position?
-- Perhaps a random number generator for rolling dice?
-
-### The syntax is simple:
-```JS
-function my_function_name() {
-
-    // Code goes here
-
+// Raise a base to an exponent and print the result
+function exponent(base, exp) {
+    let answer = base**exp;
+    console.log(answer);    // Could also be done without the variable
 }
 ```
 
-### Example 1:
+☝🏻 The parameters to that function are `base` and `exp`. When we _call_ the `exponent` function from now on, we have to give values in those locations. The values we give it are called _arguments_ but just think of them as _inputs_ or _parameters_.
 ```JS
-function say_hello() {
+exponent(5, 2);   // prints 25
+exponent(10, 3);  // prints 1000
 
-    console.log("Hello!");
+// What will this print:
+exponent()
 
+// Or this:
+exponent(6)
+```
+
+With _parameters_ we can start customizing our functions to do exactly what we want:
+```JS
+rollDice(4, 6);    // Roll four 6-sided dice for a total value
+
+randInt(-12, 12);  // Get a random whole number from -12 to 12
+```
+
+### 💻 Your Turn
+
+Go to the [main.js code file](./main.js) and create a new custom function called `add3(num1, num2, num3)` that adds the values of the variables `num1`, `num2`, and `num3` - printing the result. Go to your dev console and run the function several times to test it.
+
+## Part 2 - Return
+
+**Printing a value to the console is useful for the developer but how can we _use_ that value for more work?**
+
+The `Math.sqrt(x)` function _gives back_ the square root of a number. It does not print it to the console, we have to do that ourselves:
+```JS
+let s = Math.sqrt(16);
+console.log(s)
+```
+
+🤔 How is it _giving back_ the number 4 so we can store it in a variable?
+
+The `exponent` function we made above is a little useless. What if we wanted to use it for the Pythagorean Theorem? Right now, we can't.
+
+### 💻 Try it
+
+Go to your main.js code file and paste this in:
+```JS
+function square(value) {
+    let answer = value**2;
+}
+
+let x = square(5);   // 5 squared is 25
+console.log(x);
+```
+
+Preview your index.html file and check the console - do you see the answer to `square(5)` anywhere?
+
+**In order to provide an answer (output) from your function, we use the `return` keyword:**
+```JS
+function square(value) {
+    let answer = value**2;
+    return answer;         // Stop the function and give back the value in 'answer'
 }
 ```
 
-When a JavaScript file is loaded, it stores the functions into memory, ready to by run whenever the programmer wants.
+☝🏻 **Important notes:**
+- The `return` keyword **stops** the function, so if you have code after it, it won't run. 
+- You don't have to return a value, you can use the `return` statement to exit the function.
 
-In order to _run_ our custom function, we "call" it:
 ```JS
-say_hello();    // This "calls" our custom function, which prints "Hello!"
-```
-
-### Example 2:
-Let's make an area of the circle function (this is in your [main.js](./main.js) file)
-```JS
-function circle_area() {
-    let radius = Number(prompt("What is the radius of the circle?"));
-    console.log(`The area is: ${Math.PI * radius**2}`);
+function useless(value) {
+    let answer = value**2;
+    return;                // Return 'undefined'
+    console.log(answer);   // This line will NEVER run
 }
 ```
 
-We can test or use our function by going to the console and running `circle_area()`. Give it a try!
-
+### 📝 An example of a function that uses Parameters _and_ a Return:
+```JS
+// Return a random value from 'min' to 'max', inclusive
+randInt(min, max) {
+    let rnd = Math.floor(Math.random() * (max - min + 1)) + min;
+    return rnd;
+}
+```
 
 ---
 

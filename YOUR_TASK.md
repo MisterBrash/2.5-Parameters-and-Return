@@ -34,25 +34,11 @@ Now do the same for converting from Fahrenheit to Celsius.
 
 ---
 
-### Part 3: `roll_dice(qty, sides)`
-
-Create the function `roll_dice(qty, sides)` that simulates rolling `qty` dice, all with `sides` number of sides and _returns_ the sum of the rolls.
-
-Example:
-```JS
-let sum = roll_dice(3, 6);
-console.log(sum);           // Prints maybe 7 or 14, etc
-```
-
-Note that the dice will all have the same number of sides (for now).
-
----
-
-### Part 4: `area_circle(radius)`
+### Part 3: `area_circle(radius)`
 
 Create the function `area_circle(radius)` that calculates and _returns_ the area of a circle with the given radius. _Do **not** round the result_.
 
-### Part 5: `cylinder_volume(radius, height)`
+### Part 4: `cylinder_volume(radius, height)`
 
 The volume of a cylinder is pretty neat - you take the area of the circular base and you multiply by the height. **You already have a function for the area of a circle!**
 
@@ -60,7 +46,7 @@ Create the function `cylinder_volume(radius, height)` that calculates and _retur
 
 ---
 
-### Part 6: More Practice!
+### Part 5: More Practice!
 
 Now that you have these skills, there are so many great opportunities for your coding future!
 
